@@ -81,7 +81,7 @@ def get_games():
 
     final_df = pd.concat(dfs, sort=False)
 
-    # Salvar df antes de transpor os jogos
+    # Save to an excel file before transposing the games
     final_df.to_excel('box_scores_'+ season_type +'.xlsx')
 
     df_vs_home = final_df[final_df['MATCHUP'].str.contains('vs.')]
