@@ -12,6 +12,7 @@ my_entries = []
 
 def command_select_seasons():
 
+    global entry_list
     entry_list = ''
 
     for entries in my_entries:
@@ -31,6 +32,9 @@ my_label.grid(row=3, column=0, pady=20)
 
 my_label_2 = Label(root, text='Ex: 2022-23')
 my_label_2.grid(row=1, column=1, pady=20)
+
+exit_button = Button(root, text="Exit", command=root.destroy)
+exit_button.grid(row=4, column=2, pady=20)
 
 root.mainloop()
 
