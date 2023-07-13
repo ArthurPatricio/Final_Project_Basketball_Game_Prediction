@@ -4,31 +4,35 @@ import requests
 import pandas as pd
 from tkinter import *
 
-def tkinter_input_seasons():
+root = Tk()
+root.title("Select NBA Season(s)")
+root.geometry("840x340")
 
-    entries = []
+my_entries = []
 
-    def command_select_seasons():
+def command_select_seasons():
 
-        for x in entries:
-            my_label.config(text=entries)
+    entry_list = ''
 
-    root = Tk()
-    root.title("Select NBA Season(s)")
-    root.geometry("670x120")
+    for entries in my_entries:
+        entry_list = entry_list + str(entries.get()) + '\n'
+        my_label.config(text=entry_list)  
 
-    for x in range(5):
-        my_entry = Entry(root)
-        my_entry.grid(row=0, column=x, pady=20, padx=5)
-        entries.append(my_entry)
-    
-    my_button = Button(root, text="Select", command=command_select_seasons)
-    my_button.grid(row=2, column=2, pady=20)
+for x in range(5):
+    my_entry = Entry(root)
+    my_entry.grid(row=0, column=x, pady=20, padx=20)
+    my_entries.append(my_entry)
 
-    my_label = Label(root, text='')
-    my_label.grid(row=2, column=3, pady=20)
+my_button = Button(root, text="Select", command=command_select_seasons)
+my_button.grid(row=1, column=0, pady=20)
 
-    root.mainloop()
+my_label = Label(root, text='')
+my_label.grid(row=3, column=0, pady=20)
+
+my_label_2 = Label(root, text='Ex: 2022-23')
+my_label_2.grid(row=1, column=1, pady=20)
+
+root.mainloop()
 
 def get_games():
 
@@ -92,8 +96,8 @@ def get_games():
     # season_list = ['2020-21', '2019-20', '2018-19', '2017-18', '2016-17']
 
     dfs=[]
-
-    for season_id in season_list:
+    for season_id in entry_list:
+    #for season_id in season_list:
         games_info_url = 'https://stats.nba.com/stats/leaguegamelog?Counter=1000&DateFrom=&DateTo=&Direction=DESC&LeagueID=00&PlayerOrTeam=T&Season='+season_id+'&SeasonType='+season_type+'&Sorter=DATE'
         #json response
         response = requests.get(url=games_info_url, headers=headers).json()
@@ -130,5 +134,5 @@ def get_games():
     df_final.to_excel('games_list_'+ season_type +'.xlsx')
     '''
 if __name__ == '__main__':
-    tkinter_input_seasons()
+    command_select_seasons()
     #get_games()
