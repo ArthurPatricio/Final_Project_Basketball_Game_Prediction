@@ -2,6 +2,33 @@
 
 import requests
 import pandas as pd
+from tkinter import *
+
+def tkinter_input_seasons():
+
+    entries = []
+
+    def command_select_seasons():
+
+        for x in entries:
+            my_label.config(text=entries)
+
+    root = Tk()
+    root.title("Select NBA Season(s)")
+    root.geometry("670x120")
+
+    for x in range(5):
+        my_entry = Entry(root)
+        my_entry.grid(row=0, column=x, pady=20, padx=5)
+        entries.append(my_entry)
+    
+    my_button = Button(root, text="Select", command=command_select_seasons)
+    my_button.grid(row=2, column=2, pady=20)
+
+    my_label = Label(root, text='')
+    my_label.grid(row=2, column=3, pady=20)
+
+    root.mainloop()
 
 def get_games():
 
@@ -84,6 +111,7 @@ def get_games():
     # Save to an excel file before transposing the games
     final_df.to_excel('box_scores_'+ season_type +'.xlsx')
 
+    '''
     df_vs_home = final_df[final_df['MATCHUP'].str.contains('vs.')]
     df_at_away = final_df[final_df['MATCHUP'].str.contains('@')]
     df_vs_home = df_vs_home.rename(columns={'SEASON_ID': 'HOME_SEASON_ID', 'TEAM_ID': 'HOME_TEAM_ID', 'TEAM_ABBREVIATION': 'HOME_TEAM_ABBREVIATION', 'TEAM_NAME': 'HOME_TEAM_NAME', 'GAME_ID': 'HOME_GAME_ID', 'GAME_DATE': 'HOME_GAME_DATE', 'MATCHUP': 'HOME_MATCHUP', 'WL': 'HOME_WL', 'MIN': 'HOME_MINUTES', 'FGM': 'HOME_FGM', 'FGA': 'HOME_FGA', 'FG_PCT': 'HOME_FG_PCT', 'FG3M': 'HOME_FG3M', 'FG3A': 'HOME_FG3A', 'FG3_PCT': 'HOME_FG3_PCT', 'FTM': 'HOME_FTM', 'FTA': 'HOME_FTA', 'FT_PCT': 'HOME_FT_PCT', 'OREB': 'HOME_OREB', 'DREB': 'HOME_DREB', 'REB': 'HOME_REB', 'AST': 'HOME_AST', 'STL': 'HOME_STL', 'BLK': 'HOME_BLK', 'TOV': 'HOME_TOV', 'PF': 'HOME_PF', 'PTS': 'HOME_PTS', 'PLUS_MINUS': 'HOME_PLUS_MINUS', 'VIDEO_AVAILABLE': 'HOME_VIDEO_AVAILABLE', 'season_id': 'HOME_SEASON_ID'})
@@ -100,6 +128,7 @@ def get_games():
     df_final = df_final.drop(['index'], axis = 1)
     
     df_final.to_excel('games_list_'+ season_type +'.xlsx')
-
+    '''
 if __name__ == '__main__':
-    get_games()
+    tkinter_input_seasons()
+    #get_games()
