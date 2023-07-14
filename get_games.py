@@ -12,12 +12,18 @@ my_entries = []
 
 def command_select_seasons():
 
-    global entry_list
     entry_list = ''
 
     for entries in my_entries:
-        entry_list = entry_list + str(entries.get()) + '\n'
-        my_label.config(text=entry_list)  
+        try:
+            entry_list = entry_list + str(entries.get()) + '\n'
+            my_label.config(text=entry_list)
+        except:
+            print('error')
+
+    #print(entry_list)
+
+    return entry_list
 
 for x in range(5):
     my_entry = Entry(root)
@@ -40,10 +46,14 @@ root.mainloop()
 
 def get_games():
 
+    entry_list = command_select_seasons()
+
+    print(entry_list)
+
     season_type = input('Insert the season type, "Regular+Season" or "Playoffs": ')
 
-    seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
-    season_list = seasons.split()
+    #seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
+    #season_list = seasons.split()
 
     per_mode = 'PerGame'
 
@@ -138,5 +148,5 @@ def get_games():
     df_final.to_excel('games_list_'+ season_type +'.xlsx')
     '''
 if __name__ == '__main__':
-    command_select_seasons()
-    #get_games()
+    #command_select_seasons()
+    get_games()
