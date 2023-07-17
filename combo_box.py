@@ -50,6 +50,8 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(95, 200, 161, 31))
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -67,7 +69,8 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(5, _translate("MainWindow", "2017-18"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "Regular+Season"))
         self.comboBox_2.setItemText(1, _translate("MainWindow", "Playoffs"))
-
+        content = self.comboBox.currentText()
+        self.label.setText("Content : " + content)
 
 if __name__ == "__main__":
     import sys
