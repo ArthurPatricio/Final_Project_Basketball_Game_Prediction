@@ -3,7 +3,7 @@
 import requests
 import pandas as pd
 from tkinter import *
-
+"""
 root = Tk()
 root.title("Select NBA Season(s)")
 root.geometry("840x340")
@@ -43,17 +43,17 @@ exit_button = Button(root, text="Exit", command=root.destroy)
 exit_button.grid(row=4, column=2, pady=20)
 
 root.mainloop()
-
+"""
 def get_games():
 
-    entry_list = command_select_seasons()
+    #entry_list = command_select_seasons()
 
-    print(entry_list)
+    #print(entry_list)
 
     season_type = input('Insert the season type, "Regular+Season" or "Playoffs": ')
 
-    #seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
-    #season_list = seasons.split()
+    seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
+    season_list = seasons.split()
 
     per_mode = 'PerGame'
 
@@ -110,7 +110,7 @@ def get_games():
     # season_list = ['2020-21', '2019-20', '2018-19', '2017-18', '2016-17']
 
     dfs=[]
-    for season_id in entry_list:
+    for season_id in season_list:
     #for season_id in season_list:
         games_info_url = 'https://stats.nba.com/stats/leaguegamelog?Counter=1000&DateFrom=&DateTo=&Direction=DESC&LeagueID=00&PlayerOrTeam=T&Season='+season_id+'&SeasonType='+season_type+'&Sorter=DATE'
         #json response
