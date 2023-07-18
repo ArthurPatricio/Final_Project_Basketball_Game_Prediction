@@ -3,57 +3,27 @@
 import requests
 import pandas as pd
 from tkinter import *
-"""
-root = Tk()
-root.title("Select NBA Season(s)")
-root.geometry("840x340")
 
-my_entries = []
-
-def command_select_seasons():
-
-    entry_list = ''
-
-    for entries in my_entries:
-        try:
-            entry_list = entry_list + str(entries.get()) + '\n'
-            my_label.config(text=entry_list)
-        except:
-            print('error')
-
-    #print(entry_list)
-
-    return entry_list
-
-for x in range(5):
-    my_entry = Entry(root)
-    my_entry.grid(row=0, column=x, pady=20, padx=20)
-    my_entries.append(my_entry)
-
-my_button = Button(root, text="Select", command=command_select_seasons)
-my_button.grid(row=1, column=0, pady=20)
-
-my_label = Label(root, text='')
-my_label.grid(row=3, column=0, pady=20)
-
-my_label_2 = Label(root, text='Ex: 2022-23')
-my_label_2.grid(row=1, column=1, pady=20)
-
-exit_button = Button(root, text="Exit", command=root.destroy)
-exit_button.grid(row=4, column=2, pady=20)
-
-root.mainloop()
-"""
 def get_games():
 
     #entry_list = command_select_seasons()
 
     #print(entry_list)
 
-    season_type = input('Insert the season type, "Regular+Season" or "Playoffs": ')
+    #season_type = input('Insert the season type, "Regular+Season" or "Playoffs": ')
 
-    seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
-    season_list = seasons.split()
+    season_type = 'Regular+Season'
+
+    #seasons =input('Enter the seasons you would like to get data from separated by space (ex:"2020-21 2019-20"): ')
+
+    season_list = ['2022-23',
+               '2021-22',
+               '2020-21',
+               '2019-20',
+               '2018-19',
+               '2017-18',]
+
+    #season_list = seasons.split()
 
     per_mode = 'PerGame'
 
@@ -125,6 +95,10 @@ def get_games():
     # Save DataFrame to an excel file
 
     final_df = pd.concat(dfs, sort=False)
+
+    # Reset index
+
+    final_df = final_df.reset_index(drop=True)
 
     # Save to an excel file before transposing the games
     final_df.to_excel('box_scores_'+ season_type +'.xlsx')
