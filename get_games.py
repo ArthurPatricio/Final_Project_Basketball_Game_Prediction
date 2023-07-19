@@ -122,5 +122,4 @@ def get_games():
     df_final.to_excel('games_list_'+ season_type +'.xlsx')
     '''
 if __name__ == '__main__':
-    #command_select_seasons()
     get_games()
