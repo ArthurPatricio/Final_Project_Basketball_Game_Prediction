@@ -102,17 +102,26 @@ def get_games():
 
     '''
 
-    team_ids = final_df['TEAM_ID'].to_list()
+    team_ids = final_df['TEAM_ID']
 
-    season = 2022-23
+    team_ids.drop_duplicates(inplace=True)
 
-    for team_id in tqdm.tqdm(team_ids):
+    df_b = []
 
-        print(team_id)
+    for team_id in team_ids:
+        for season in season_list:             
+            df_a = final_df.loc[(final_df['season_id'] == season) & (final_df['TEAM_ID'] == team_id)]
+            #print(season)
+            #print(team_id)
+            #print(df_a)
+            df_a.sort_values(by=['GAME_DATE'], ascending=True, inplace=True)
+            print(len(df_a))
+            df_a['GAME_N'] = range(1,len(df_a)+1)
+            df_b.append(df_a)
 
-        df.loc[(df['season_id'] == season) & (df['TEAM_ID'] == team_id), 'GAME_N'] = range(1,83)
+    df_final = pd.concat(df_b, sort=False)
     
-    final_df.to_excel('games_list_'+ season_type +'.xlsx')
+    df_final.to_excel('games_list_'+ season_type +'.xlsx')
 
 if __name__ == '__main__':
     get_games()
