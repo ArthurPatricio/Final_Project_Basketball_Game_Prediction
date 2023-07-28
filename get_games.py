@@ -2,6 +2,7 @@
 
 import requests
 import pandas as pd
+import tqdm
 
 def get_games():
 
@@ -101,14 +102,17 @@ def get_games():
 
     '''
 
-    team_ids = final_df['TEAM_ID']
+    team_ids = final_df['TEAM_ID'].to_list()
 
-    for team_id in team_ids:
-        for season in season_list:
-            df.loc[(df['season_id'] == season) & (df['TEAM_ID'] == team_id), 'GAME_N'] = range(1,83)
+    season = 2022-23
 
+    for team_id in tqdm.tqdm(team_ids):
+
+        print(team_id)
+
+        df.loc[(df['season_id'] == season) & (df['TEAM_ID'] == team_id), 'GAME_N'] = range(1,83)
     
-    df_final.to_excel('games_list_'+ season_type +'.xlsx')
+    final_df.to_excel('games_list_'+ season_type +'.xlsx')
 
 if __name__ == '__main__':
     get_games()
