@@ -105,9 +105,7 @@ def get_games():
 
     for team_id in team_ids:
         for season in season_list:
-            i = 1
-            final_df [team_id][season] = i
-            i =+ 1
+            df.loc[(df['season_id'] == season) & (df['TEAM_ID'] == team_id), 'GAME_N'] = range(1,83)
 
     
     df_final.to_excel('games_list_'+ season_type +'.xlsx')
