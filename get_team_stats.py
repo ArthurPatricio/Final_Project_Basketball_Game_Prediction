@@ -109,7 +109,7 @@ def get_games():
         df['SEASON'] = season
         #print(gm_dt)
         #print(f'{game_date[1]}%2F{game_date[2]}%2F{game_date[0]}')
-        dfs.append(df) 
+        dfs.append(df)
 
     final_df = pd.concat(dfs)
 
@@ -117,7 +117,9 @@ def get_games():
 
     final_df.drop_duplicates(subset=['TEAM_ID', 'GP', 'SEASON'], inplace=True)
 
-    final_df.to_excel('team_stats.xlsx')
+    final_df['SEASON'].replace('_', '-', inplace=True)
+
+    final_df.to_excel('team_stats_Regular+Season.xlsx')
 
 if __name__ == '__main__':
         get_games()
