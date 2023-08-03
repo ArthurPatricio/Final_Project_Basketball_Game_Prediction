@@ -35,19 +35,24 @@ def org_data():
 
     final = final[['HOME_TEAM_ID', 'HOME_TEAM_ABBREVIATION', 'HOME_GAME_ID', 'HOME_MATCHUP', 'HOME_SEASON', 'HOME_GAME_N', 'AWAY_TEAM_ID', 'AWAY_TEAM_ABBREVIATION', 'AWAY_GAME_ID', 'AWAY_MATCHUP', 'AWAY_SEASON', 'AWAY_GAME_N']]
 
-    final.to_excel('org_games.xlsx')
+    #final.to_excel('org_games.xlsx')
 
     for gp in teams_stats['GP']:
         teams_stats['GAME_N'] = teams_stats['GP'] + 1
+        teams_stats['COMPARE'] =teams_stats['GAME_N']+'-'+teams_stats['TEAM_ID']+'-'+teams_stats['SEASON']
+    
+    for gp in final['HOME_GAME_N']:
+        final['COMPARE'] = final['HOME_GAME_N']+'-'+final['TEAM_ID']+'-'+final['HOME_SEASON']
 
-    teams_stats['COMPARE'] =teams_stats['GAME_N']+'-'+teams_stats['TEAM_ID']+'-'+teams_stats['SEASON']
-    final['COMPARE'] = final['HOME_GAME_N']+'-'+final['TEAM_ID']+'-'+final['HOME_SEASON']
+    #df = []
+    #tuple = 
 
-    df = []
-    tuple = 
+    final.to_excel('test_org_games.xlsx')
+    teams_stats.to_excel('test_team_stats_Regular+Season')
 
-    for matchup in final['HOME_GAME_ID']:
-        if teams_stats['COMPARE'] == final['COMPARE']:
+
+    #for matchup in final['HOME_GAME_ID']:
+    #    if teams_stats['COMPARE'] == final['COMPARE']:
              
 
 if __name__ == '__main__':
