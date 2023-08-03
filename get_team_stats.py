@@ -117,7 +117,7 @@ def get_games():
 
     final_df.drop_duplicates(subset=['TEAM_ID', 'GP', 'SEASON'], inplace=True)
 
-    final_df['SEASON'].replace('_', '-', inplace=True)
+    final_df['SEASON'].replace('_', '-', inplace=True, regex=True)
 
     final_df.to_excel('team_stats_Regular+Season.xlsx')
 
