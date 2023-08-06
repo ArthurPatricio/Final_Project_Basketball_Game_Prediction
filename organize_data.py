@@ -35,20 +35,22 @@ def org_data():
 
     final = final[['HOME_TEAM_ID', 'HOME_TEAM_ABBREVIATION', 'HOME_GAME_ID', 'HOME_MATCHUP', 'HOME_SEASON', 'HOME_GAME_N', 'AWAY_TEAM_ID', 'AWAY_TEAM_ABBREVIATION', 'AWAY_GAME_ID', 'AWAY_MATCHUP', 'AWAY_SEASON', 'AWAY_GAME_N']]
 
-    #final.to_excel('org_games.xlsx')
+    final.to_excel('org_games.xlsx')
 
-    for gp in teams_stats['GP']:
+    for gp in tqdm.tqdm(teams_stats['GP']):
         teams_stats['GAME_N'] = teams_stats['GP'] + 1
-        teams_stats['COMPARE'] =teams_stats['GAME_N']+'-'+teams_stats['TEAM_ID']+'-'+teams_stats['SEASON']
+        teams_stats['COMPARE'] = teams_stats['GAME_N'].astype(str) + '-' + teams_stats['TEAM_ID'].astype(str) + '-' + teams_stats['SEASON']
     
-    for gp in final['HOME_GAME_N']:
-        final['COMPARE'] = final['HOME_GAME_N']+'-'+final['TEAM_ID']+'-'+final['HOME_SEASON']
+    for gp in tqdm.tqdm(final['HOME_GAME_N']):
+        final['COMPARE'] = final['HOME_GAME_N'].astype(str) + '-' + final['HOME_TEAM_ID'].astype(str) + '-' + final['HOME_SEASON']
 
     #df = []
     #tuple = 
 
+    teams_stats.drop("Unnamed: 0",axis=1, inplace=True)
+
     final.to_excel('test_org_games.xlsx')
-    teams_stats.to_excel('test_team_stats_Regular+Season')
+    teams_stats.to_excel('test_teams_stats_Regular+Season.xlsx')
 
 
     #for matchup in final['HOME_GAME_ID']:
