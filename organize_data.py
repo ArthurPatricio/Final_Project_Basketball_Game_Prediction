@@ -42,19 +42,17 @@ def org_data():
         teams_stats['COMPARE'] = teams_stats['GAME_N'].astype(str) + '-' + teams_stats['TEAM_ID'].astype(str) + '-' + teams_stats['SEASON']
     
     for gp in tqdm.tqdm(final['HOME_GAME_N']):
-        final['COMPARE'] = final['HOME_GAME_N'].astype(str) + '-' + final['HOME_TEAM_ID'].astype(str) + '-' + final['HOME_SEASON']
+        final['HOME_COMPARE'] = final['HOME_GAME_N'].astype(str) + '-' + final['HOME_TEAM_ID'].astype(str) + '-' + final['HOME_SEASON']
+        final['AWAY_COMPARE'] = final['AWAY_GAME_N'].astype(str) + '-' + final['AWAY_TEAM_ID'].astype(str) + '-' + final['AWAY_SEASON']
 
-    #df = []
-    #tuple = 
 
     teams_stats.drop("Unnamed: 0",axis=1, inplace=True)
 
+    left_join = pd.merge(final, teams_stats, left_on='HOME_COMPARE', right_on='COMPARE')
+
     final.to_excel('test_org_games.xlsx')
     teams_stats.to_excel('test_teams_stats_Regular+Season.xlsx')
-
-
-    #for matchup in final['HOME_GAME_ID']:
-    #    if teams_stats['COMPARE'] == final['COMPARE']:
+    left_join.to_excel('test_left_join.xlsx')
              
 
 if __name__ == '__main__':
