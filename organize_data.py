@@ -33,7 +33,7 @@ def org_data():
 
     final = pd.concat([df_h, df_a], axis=1)
 
-    final = final[['HOME_TEAM_ID', 'HOME_TEAM_ABBREVIATION', 'HOME_GAME_ID', 'HOME_MATCHUP', 'HOME_SEASON', 'HOME_GAME_N', 'AWAY_TEAM_ID', 'AWAY_TEAM_ABBREVIATION', 'AWAY_GAME_ID', 'AWAY_MATCHUP', 'AWAY_SEASON', 'AWAY_GAME_N']]
+    final = final[['HOME_TEAM_ID', 'HOME_TEAM_ABBREVIATION', 'HOME_GAME_ID', 'HOME_MATCHUP', 'HOME_SEASON', 'HOME_GAME_N', 'HOME_WL', 'AWAY_TEAM_ID', 'AWAY_TEAM_ABBREVIATION', 'AWAY_GAME_ID', 'AWAY_MATCHUP', 'AWAY_SEASON', 'AWAY_GAME_N', 'AWAY_WL']]
 
     final.to_excel('org_games.xlsx')
 
