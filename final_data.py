@@ -15,7 +15,7 @@ def final_data():
     left_join.drop("Unnamed: 0",axis=1, inplace=True)
 
     left_join.to_excel('test_left_join.xlsx')
-    left_join.to_json('test_json.json')
+    left_join.to_json('test_json.json', orient='index')
 
 
 if __name__ == '__main__':
