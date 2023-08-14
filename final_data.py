@@ -17,7 +17,7 @@ def final_data():
     left_join.drop(left_join.columns[[0,1,2,3,4,5,7,8,9,10,11,12,13,14,
                                       15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
 
-    left_join.to_excel('test_left_join.xlsx')
+    left_join.to_excel('nba_data.xlsx')
     #left_join.to_json('test_json.json', orient='index')
 
 
