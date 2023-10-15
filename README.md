@@ -192,8 +192,8 @@ Analisando os dois gráficos, percebe-se que o fator casa é valioso na NBA. Tim
 
 Um novo dataframe, den_home_data, foi criado a partir de um subconjunto de dados formado por todas as partidas em casa do time Denver Nuggets. Denver foi o time com melhor rendimento em casa no período em análise e é o atual campeão da NBA, sagrandro-se campeão da temproada 2022-23.  Então, vamos checá-lo em maior detalhe.
 
-den_home_data = nba_data[nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN']
-den_home_data.head()
+    den_home_data = nba_data[nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN']
+    den_home_data.head()
 
         HOME_TEAM_ID	HOME_TEAM_ABBREVIATION	HOME_GAME_ID	HOME_MATCHUP	HOME_SEASON	HOME_GAME_N	HOME_WL	AWAY_TEAM_ID	AWAY_TEAM_ABBREVIATION	AWAY_GAME_ID	...	BLK_RANK_y	BLKA_RANK_y	PF_RANK_y	PFD_RANK_y	PTS_RANK_y	PLUS_MINUS_RANK_y	GAME_DATE_y	SEASON_y	GAME_N_y	COMPARE_y
     27	1610612743	DEN	22200422	DEN vs. WAS	2022-23	27	W	1610612764	WAS	22200422	...	5	12	7	25	23	25	2022-12-12-2022_23	2022-23	29	29-1610612764-2022-23
