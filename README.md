@@ -486,3 +486,161 @@ Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte m
     fig.subplots_adjust(hspace = 0.3)
 
 ![denver_plots_block_3](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_3.png)
+
+Os dois blocos a seguir são bastante semelhantes aos anteriores, porém, estes comparam a performance em casa e fora. Como é de se esperar, nas 4 estatísticas escolhidas para análise, as médias são melhores em casa. Nos jogos em casa Denver arremessa em média 51,5% e fora 49,6%, acerta em média uma bola de três, cerca de 4 lances livres e pega 4 rebotes a mais. Em uma liga tão disputada e onde os jogos são muitas vezes são decididos nos últimos lances, estas alerações fazem muita diferença no reusultado das partidas.
+
+O segundo aponta assim como fez o gráfico de linha para vitórias e derrotas mencionado anteriormente, que não existe de forma consistente um padrão de performance que garente uma vitória. Nós podemos perceber que há jogos em que Denver tem bons números e ganha, outros que tem bons números e perde, outros que tem números inferiores e perde e também jogos que que performa abaixo e ganha. Todos os cenários se apresentam no decorrer da temporada. Como também, como é ocorre muitas vezes, o cenário onde um time performa bem em certos aspectos e não tão bem em outros.
+
+Como já mencionado, no esporte, principamente nos coletivos onde você enfrenta outro time em uma partida, nem sempre precisa-se ter os melhores números, apenas o suficiente para bater o adversário.
+
+Tal comportamento analisado já nos indica que não será trivial criar uma rede neural capaz de prever o resultado de jogos com uma acertividade alta. Nem sempre boas performances resultam em vitórias em um jogo tão complexo e de tantos números.
+
+    # DENVER GAME BAR PLOTS BY HOME/AWAY
+
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(19, 10))
+
+    sns.set_theme(style="ticks")
+
+    x8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['REB']
+    y8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+    plt.figure(figsize=(19,12))
+    fig8 = sns.barplot(
+                        x=z8,
+                        y=x8,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax4,
+                        )
+    fig8.set_xlabel('W/L', fontsize=10)
+    fig8.set_ylabel('REB', fontsize=10)
+    ax4.set_title('DENVER NUGGETS REBOUNDS PER W/L', fontsize = 12)
+    for i in fig8.containers:
+        fig8.bar_label(i,)
+
+
+    x9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG_PCT']
+    y9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+    fig9 = sns.barplot(
+                        x=z9,
+                        y=x9,
+                        palette='Set2',
+                        errorbar=None,
+                        ax = ax1
+                        )                   
+    fig9.set_xlabel('W/L', fontsize=10)
+    fig9.set_ylabel('FG PCT', fontsize=10)
+    ax1.set_title('DENVER NUGGETS FIELD GOAL PCT PER W/L', fontsize = 12)
+    for i in fig9.containers:
+        fig9.bar_label(i,)
+
+    x10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FTA']
+    y10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    fig10 = sns.barplot(
+                        x=z10,
+                        y=x10,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax2
+                        )
+    fig10.set_xlabel('W/L', fontsize=10)
+    fig10.set_ylabel('FREE THROWS MADE', fontsize=10)
+    ax2.set_title('DENVER NUGGETS FREE THROWS MADE PER W/L', fontsize = 12)
+    for i in fig10.containers:
+        fig10.bar_label(i,)
+
+    x11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG3M']
+    y11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    fig11 = sns.barplot(
+                        x=z11,
+                        y=x11,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax3
+                        )
+    fig11.set_xlabel('W/L', fontsize=10)
+    fig11.set_ylabel('FG3M', fontsize=10)
+    ax3.set_title('DENVER NUGGETS FG3 MADE PER W/L', fontsize = 12)
+    for i in fig11.containers:
+        fig11.bar_label(i,)
+
+    fig.subplots_adjust(hspace = 0.3)
+
+![denver_plots_block_4](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_4.png)
+
+    # DENVER GAME LINE PLOTS BY HOME/AWAY
+
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(19, 10))
+
+    sns.set_theme(style="ticks")
+
+    x8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['REB']
+    y8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    plt.figure(figsize=(19,12))
+    fig8 = sns.lineplot(
+                        x=y8,
+                        y=x8,
+                        color='red',
+                        hue=z8,
+                        ax=ax4
+                        )
+    fig8.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig8.set_ylabel('REB', fontsize=10)
+    ax4.set_title('DENVER NUGGETS REBOUNDS PER GP', fontsize = 12)
+
+    x9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG_PCT']
+    y9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    fig9 = sns.lineplot(
+                        x=y9,
+                        y=x9,
+                        color='red',
+                        hue=z9,
+                        ax = ax1
+                        )
+                        
+    fig9.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig9.set_ylabel('FG PCT', fontsize=10)
+    ax1.set_title('DENVER NUGGETS FIELD GOAL PCT PER GP', fontsize = 12)
+
+    x10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FTA']
+    y10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    fig10 = sns.lineplot(
+                        x=y10,
+                        y=x10,
+                        color='red',
+                        hue=z9,
+                        ax=ax2
+                        )
+    fig10.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig10.set_ylabel('FREE THROWS MADE', fontsize=10)
+    ax2.set_title('DENVER NUGGETS FREE THROWS MADE PER GP', fontsize = 12)
+
+    x11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG3M']
+    y11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['MATCHUP'].str.contains('vs.')
+
+    fig11 = sns.lineplot(
+                        x=y11,
+                        y=x11,
+                        color='red',
+                        hue=z11,
+                        ax=ax3
+                        )
+    fig11.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig11.set_ylabel('FG3M', fontsize=10)
+    ax3.set_title('DENVER NUGGETS FG3 MADE PER GP', fontsize = 12)
+
+    fig.subplots_adjust(hspace = 0.3)
+
+![denver_plots_block_5](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_5.png)
