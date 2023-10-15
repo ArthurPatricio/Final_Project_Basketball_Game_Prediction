@@ -164,3 +164,26 @@ Primeiramente, foram plotadas as vitórias e derrotas dos 10 times com melhor pe
     plt.show()
 
 ![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.png)
+
+Também foram plotadas as vitórias e derrotas dos 10 times com melhor performance em jogos fora de casa nas últimas 6 temporadas apenas para termos uma visualização inicial dos nossos dados. 
+
+    # TEAMS PER AWAY WINS/LOSSES BAR PLOT
+
+    plt.figure(figsize=(20,12))
+    fig2 = sns.countplot(data=nba_data, x=nba_data['AWAY_TEAM_ABBREVIATION'],
+                            palette = 'husl', 
+                            hue = nba_data['AWAY_WL'],
+                            order=nba_data[nba_data['AWAY_WL'] == 'W']['AWAY_TEAM_ABBREVIATION'].value_counts().iloc[:10].index
+                            )
+    fig2.set_xlabel('WINS/LOSES', fontsize=20)
+    fig2.set_ylabel('COUNT', fontsize=20)
+    fig2.tick_params(labelsize=20)
+    plt.title('AWAY WINS/LOSES BY TEAM', fontsize = 20)
+    for p in fig2.patches:
+        txt = str(p.get_height().round(2))
+        txt_x = p.get_x() 
+        txt_y = p.get_height()
+        fig2.text(txt_x,txt_y,txt)
+    plt.show()
+
+![away_wins_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/away_wins_losses_by_team.png)
