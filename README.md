@@ -694,41 +694,10 @@ A partir deste ponto nosso conjunto dce dados foi tratado a fim de alimentar a R
 * Variância: Checagem de atributos com variância igual a zero. Nenhum atributo foi encontrado.
 
 * Normalização: Os dados das bases de Treino e Teste foram normalizados. É uma etapa fundamental pois o conjunto de dados possui atributos numéricos em ordens de grandeza diferentes, como por exmplo 'W_PCT_x' e 'FGA_x'. Esta diferença pode levar os modelos a uma menor eficiência.
-    # Drop Columns
+    
+        # Drop Columns
 
-    nba_data.drop(nba_data.columns[[0,1,2,3,4,5,7,8,9,10,11,12,13,14,
-                                    15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
+        nba_data.drop(nba_data.columns[[0,1,2,3,4,5,7,8,9,10,11,12,13,14,
+                                        15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
 
-    nba_data.to_excel('test_table.xlsx')
-    # Turn categorical column HOME_WL into numerial
-
-    nba_data['HOME_WL'] = nba_data['HOME_WL'].apply(lambda x: 0 if x == 'W' else 1)
-    nba_data.head()
-
-
-    HOME_WL	GP_x	W_x	L_x	W_PCT_x	MIN_x	FGM_x	FGA_x	FG_PCT_x	FG3M_x	...	REB_RANK_y	AST_RANK_y	TOV_RANK_y	STL_RANK_y	BLK_RANK_y	BLKA_RANK_y	PF_RANK_y	PFD_RANK_y	PTS_RANK_y	PLUS_MINUS_RANK_y
-    0	0	1	1	0	1.000	48.0	42.0	92.0	0.457	11.0	...	12	15	14	2	6	2	25	8	8	7
-    1	0	2	1	1	0.500	48.0	43.0	81.0	0.531	13.0	...	10	17	24	21	2	7	7	27	18	9
-    2	0	3	2	1	0.667	49.7	42.0	86.3	0.486	11.0	...	8	9	9	14	28	30	10	7	17	27
-    3	1	4	3	1	0.750	49.3	42.5	86.0	0.494	10.8	...	9	7	16	26	3	21	23	17	11	25
-    4	0	5	3	2	0.600	49.0	41.6	86.0	0.484	15.2	...	24	14	23	21	5	7	19	23	20	11
-    5 rows × 105 columns
-
-    # Separate database in train and test
-
-    X = nba_data.loc[:, nba_data.columns != 'HOME_WL']
-    y = nba_data['HOME_WL']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, 
-                                                        test_size= 0.3, 
-                                                        random_state = 100, 
-                                                        stratify = y,
-                                                        )
-
-    # Check columns with variance equal to zero and drop them
-
-    zero_var_filter = VarianceThreshold()
-    X_train = zero_var_filter.fit_transform(X_train)
-    X_test = zero_var_filter.transform(X_test)
-    print('X_train e X_test possuíam', (zero_var_filter.variances_ == 0).sum(), 'atributo(s) com variância igual a zero \n')
-
-    #print(zero_var_filter.variances_ == 0, '\n')
+        nba_data.to_excel('test_table.xlsx')
