@@ -694,7 +694,7 @@ A partir deste ponto nosso conjunto dce dados foi tratado a fim de alimentar a R
 * Variância: Checagem de atributos com variância igual a zero. Nenhum atributo foi encontrado.
 
 * Normalização: Os dados das bases de Treino e Teste foram normalizados. É uma etapa fundamental pois o conjunto de dados possui atributos numéricos em ordens de grandeza diferentes, como por exmplo 'W_PCT_x' e 'FGA_x'. Esta diferença pode levar os modelos a uma menor eficiência.
-    # Drop Columns
+# Drop Columns
 
     nba_data.drop(nba_data.columns[[0,1,2,3,4,5,7,8,9,10,11,12,13,14,
                                     15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
