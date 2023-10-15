@@ -701,3 +701,51 @@ A partir deste ponto nosso conjunto dce dados foi tratado a fim de alimentar a R
                                         15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
 
         nba_data.to_excel('test_table.xlsx')
+
+        # Turn categorical column HOME_WL into numerial
+
+        nba_data['HOME_WL'] = nba_data['HOME_WL'].apply(lambda x: 0 if x == 'W' else 1)
+        nba_data.head()
+
+        # Separate database in train and test
+
+        X = nba_data.loc[:, nba_data.columns != 'HOME_WL']
+        y = nba_data['HOME_WL']
+        X_train, X_test, y_train, y_test = train_test_split(X, y, 
+                                                            test_size= 0.3, 
+                                                            random_state = 100, 
+                                                            stratify = y,
+                                                            )
+
+        # Check columns with variance equal to zero and drop them
+
+        zero_var_filter = VarianceThreshold()
+        X_train = zero_var_filter.fit_transform(X_train)
+        X_test = zero_var_filter.transform(X_test)
+        print('X_train e X_test possuíam', (zero_var_filter.variances_ == 0).sum(), 'atributo(s) com variância igual a zero \n')
+
+        #print(zero_var_filter.variances_ == 0, '\n')
+
+        X_train e X_test possuíam 0 atributo(s) com variância igual a zero
+
+        # Normalize data
+
+        preprocessParams = preprocessing.StandardScaler().fit(X_train)
+        X_train_normalized = preprocessParams.transform(X_train)
+        X_test_normalized = preprocessParams.transform(X_test)
+
+        X_train_normalized
+
+        array([[-0.19390183, -0.51290067,  0.17945249, ..., -0.17228294,
+        -0.60944706,  0.07584392],
+       [-1.61094241, -1.43070805, -1.36273462, ...,  1.22296558,
+         0.88705677,  1.1184542 ],
+       [-1.21239975, -1.43070805, -0.66875042, ...,  0.06025848,
+        -1.18502546, -1.19845753],
+       ...,
+       [ 0.95744365,  0.94029435,  0.71921797, ..., -1.21871934,
+        -1.06990978,  1.00260862],
+       [ 0.69174854,  1.47568199, -0.28320365, ...,  0.87415345,
+         1.46263517,  0.53922627],
+       [-1.38952982, -1.12477225, -1.28562526, ..., -1.21871934,
+         0.19636269, -1.31430312]])
