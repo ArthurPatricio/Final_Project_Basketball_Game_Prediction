@@ -163,4 +163,4 @@ Primeiramente, foram plotadas as vitórias e derrotas dos 10 times com melhor pe
         fig11.text(txt_x,txt_y,txt)
     plt.show()
 
-![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.pdf)
+![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.png)
