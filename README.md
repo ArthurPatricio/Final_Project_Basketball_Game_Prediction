@@ -644,3 +644,59 @@ Tal comportamento analisado já nos indica que não será trivial criar uma rede
     fig.subplots_adjust(hspace = 0.3)
 
 ![denver_plots_block_5](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_5.png)
+
+# Previsão de resultados utilizando Redes Neurais
+
+A partir deste ponto nosso conjunto dce dados foi tratado a fim de alimentar a Rede Neural com o intuito de prever o resultado de jogos.
+
+# Preparo dos Dados
+
+* Redução de dimensão: Atributos categóricos que não contribuem para a previsão dos jogos foram retirados, a maioria categórica e redundante entre si, como por exemplo, atributos que trazem o nome e a abreviação dos times.
+
+    - Segue abaixo a lista completa do 27 atributos retirados:
+
+        - 1.	HOME_TEAM_ID
+        - 2.	HOME_TEAM_ABBREVIATION
+        - 3.	HOME_GAME_ID
+        - 4.	HOME_MATCHUP
+        - 5.	HOME_SEASON
+        - 6.	HOME_GAME_N
+        - 7.	AWAY_TEAM_ID
+        - 8.	AWAY_TEAM_ABBREVIATION
+        - 9.	AWAY_GAME_ID
+        - 10.	AWAY_MATCHUP
+        - 11.	AWAY_SEASON
+        - 12.	AWAY_GAME_N
+        - 13.	AWAY_WL
+        - 14.	HOME_COMPARE
+        - 15.	AWAY_COMPARE
+        - 16.	TEAM_ID_x
+        - 17.	TEAM_NAME_x
+        - 18.	GAME_DATE_x
+        - 19.	SEASON_x
+        - 20.	GAME_N_x
+        - 21.	COMPARE_x
+        - 22.	TEAM_ID_y
+        - 23.	TEAM_NAME_y
+        - 24.	GAME_DATE_y
+        - 25.	SEASON_y
+        - 26.	GAME_N_y
+        - 27.	COMPARE_y
+
+* Conversão categórico x numérico: Apos a redução de dimensionalidade, apenas um atributo categório permaneceu no conjunto de dados, o que indica o vencedor do confronto. Ele foi convertido de forma que o valor W (vitória) passa a ser 0 e L (derrota) passa a ser 1.
+
+* Divisão treino x teste: Os conjuntos de treino e teste foram criados com os seguintes parâmetros:
+
+    - Razão treino/teste igual a 0,3.
+    - Random state igual a 100 para permitir reproducibilidade dos conjuntos de treino e teste.
+    - Estratificação ativada para permitir uma divisão equilibrada entre os resultados do sub conjunto de dados escolhido.
+
+* Variância: Checagem de atributos com variância igual a zero. Nenhum atributo foi encontrado.
+
+* Normalização: Os dados das bases de Treino e Teste foram normalizados. É uma etapa fundamental pois o conjunto de dados possui atributos numéricos em ordens de grandeza diferentes, como por exmplo 'W_PCT_x' e 'FGA_x'. Esta diferença pode levar os modelos a uma menor eficiência.
+    # Drop Columns
+
+    nba_data.drop(nba_data.columns[[0,1,2,3,4,5,7,8,9,10,11,12,13,14,
+                                    15,16,17,70,71,72,73,74,75,128,129,130,131]], axis=1, inplace=True)
+
+    nba_data.to_excel('test_table.xlsx')
