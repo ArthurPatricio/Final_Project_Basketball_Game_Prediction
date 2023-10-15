@@ -230,3 +230,85 @@ Abaixo, temos um gráfico que apresenta o histórico de confrontos dos Nuggets e
     plt.show()
 
 ![denver_nuggets_home_matchups](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_nuggets_home_matchups.png)
+
+# 3. Avaliação da temporada
+
+Visto que o intuito deste trabalho é prever o vencedor de jogos de NBA utilizandoos dados das temporadas regulares obtidas, abaixo realizamos um de exercício de comparação entre a porcetagem de vitórias do Denver Nuggets ao longo da temporada 2022-23 e alguns das principais estatísticas que temos à disposição.
+
+Porém, analisemos primeiro o quarto gráfico. Ele apresenta a distribuição de vitórias em casa contra os jogos da temporada, como também traça a reta ajustada. Este gráfico nos mostra como Denver possui bom rendimento quando é mandante, pontos quase que traçam uma reta, nos dizendo assim, que Denver venceu praticamente todos os jogos em casa.
+
+Os outros 3 gráficos possuem como eixo x as partidas jogadas em casa. O primeiro, nossa fonte de comparação, apresenta o rendimento do time através da média do percentual de vitórias na temporada até dada partida. O segundo, a média de lances livres tentados por partida na temporada até dada partida. Já o terceiro, a média da porcentagem de arremessos convertidos na temporada até dada partida. 
+
+Como pode-se notar, existe similaridade nas curvas. Tal fato corrobora o esperado, as duas estatísticas apresentadas são historicamente reconhecidas como bons medidores da capacidade de um time em vencer partidas. O lance livre, conhecido também como o arremesso mais fácil do esporte, é a forma mais garantida de pontuar-se no basquete, na temporada 2022-23 por exemplo, a média da liga foi de 78,2% de acerto. Em contra partida, a média para arremesso (cestas) certas ficou em 47,5%. De forma geral, são considerados bons números, que costumam indicar boas chances de vitórias, a partir de 80% para lances livres e 50% para arremessos. [2]
+
+Na temporada 2022-23, Denver terminou com 75,1% para lances livres, sendo a quinta pior média entre todos os times e 50.4% para arremessos, a melhor marca da liga. Entretando, os Nuggets terminam a temporada regular com apenas a quarta posição no ranking geral. Para nos contextualizarmos melhor, vale uma breve explicação de como a temporada regular da NBA opera. [3]
+
+De forma simplificada, temos 30 times que são dividios em 2 grupos (conferências) de 15 times cada, os 8 clubes com melhor ranking dentro de cada conferência se classificam para a pós-temporada, que funciona como um torneiro mata-mata, assim como a segunda fase de uma Copa do Mundo de futebol.
+
+Denver joga na conferência Oeste, os 3 times que terminaram a sua frente jogam na leste. Denver termina a temproada regular liderando a sua conferência, se classificando em primeiro para os playoffs. Se analizarmos o recorte de meio de temporada, Denver chega ao ponto médio com a melhor campanha de sua conferência, com 6 vitórias a mais que o segundo colocado, grande vantagem para a NBA. Já na segunda metade, tem apenas a oitava melhor campanha dentro da conferência. Olhando para a liga como um todo, na primeira metade, termina em terceiro geral, com apenas uma vitória atrás dos líderes, na segunda metade, possui apenas a décima quinta melhor campanha. [4]
+
+Logo percebe-se que a queda de rendimento dos Nuggets ao fim da temporada, perceptível nos gráfico foi resultado de uma escolha do clube em poupar seus atletas, a fim chegar na pós temporada com o time o mais descansado e saudável possível, depois que notou-se que o primeiro lugar na conferência muito dificilmente seria perdido. 
+
+    # DENVER HOME GAMES PLOT
+
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(19, 10))
+
+    sns.set_theme(style="ticks")
+
+    x4 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['GP_x']
+    y4 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['W_x']
+
+    plt.figure(figsize=(15,12))
+    fig4 = sns.regplot(
+                        x=x4,
+                        y=y4,
+                        color='blue',
+                        ax=ax4
+                        )
+    fig4.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig4.set_ylabel('WINS', fontsize=10)
+    ax4.set_title('DENVER NUGGETS HOME WINS DISTRIBUTION', fontsize = 12)
+
+    x5 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['W_PCT_x']
+    y5 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['HOME_GAME_N']
+
+    fig5 = sns.lineplot(
+                        x=y5,
+                        y=x5,
+                        color='blue',
+                        ax = ax1
+                        )
+                        
+    fig5.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig5.set_ylabel('WIN PCT', fontsize=10)
+    ax1.set_title('DENVER NUGGETS HOME WIN PCT PER GP', fontsize = 12)
+
+    x6 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['FTA_x']
+    y6 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['HOME_GAME_N']
+
+    fig6 = sns.lineplot(
+                        x=y6,
+                        y=x6,
+                        color='blue',
+                        ax=ax2
+                        )
+    fig6.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig6.set_ylabel('FREE THROW ATTEMPTS', fontsize=10)
+    ax2.set_title('DENVER NUGGETS HOME FREE THROW ATTEMPTS PER GP', fontsize = 12)
+
+    x7 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['FG_PCT_x']
+    y7 = nba_data[(nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN') & (nba_data['HOME_SEASON'] == '2022-23')]['HOME_GAME_N']
+
+    fig7 = sns.lineplot(
+                        x=y7,
+                        y=x7,
+                        color='blue',
+                        ax=ax3
+                        )
+    fig7.set_xlabel('GAMES PLAYED', fontsize=10)
+    fig7.set_ylabel('FG PCT', fontsize=10)
+    ax3.set_title('DENVER NUGGETS HOME FG PCT PER GP', fontsize = 12)
+
+    fig.subplots_adjust(hspace = 0.3)
+
+![denver_plots_block_1](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_1.png)
