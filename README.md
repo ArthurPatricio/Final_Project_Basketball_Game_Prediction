@@ -187,3 +187,20 @@ Também foram plotadas as vitórias e derrotas dos 10 times com melhor performan
     plt.show()
 
 ![away_wins_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/away_wins_losses_by_team.png)
+
+Analisando os dois gráficos, percebe-se que o fator casa é valioso na NBA. Times tendem a ter melhores resultados quando jogam em seus domínios.
+
+Um novo dataframe, den_home_data, foi criado a partir de um subconjunto de dados formado por todas as partidas em casa do time Denver Nuggets. Denver foi o time com melhor rendimento em casa no período em análise e é o atual campeão da NBA, sagrandro-se campeão da temproada 2022-23.  Então, vamos checá-lo em maior detalhe.
+
+den_home_data = nba_data[nba_data['HOME_TEAM_ABBREVIATION'] == 'DEN']
+den_home_data.head()
+
+        HOME_TEAM_ID	HOME_TEAM_ABBREVIATION	HOME_GAME_ID	HOME_MATCHUP	HOME_SEASON	HOME_GAME_N	HOME_WL	AWAY_TEAM_ID	AWAY_TEAM_ABBREVIATION	AWAY_GAME_ID	...	BLK_RANK_y	BLKA_RANK_y	PF_RANK_y	PFD_RANK_y	PTS_RANK_y	PLUS_MINUS_RANK_y	GAME_DATE_y	SEASON_y	GAME_N_y	COMPARE_y
+    27	1610612743	DEN	22200422	DEN vs. WAS	2022-23	27	W	1610612764	WAS	22200422	...	5	12	7	25	23	25	2022-12-12-2022_23	2022-23	29	29-1610612764-2022-23
+    107	1610612743	DEN	22100411	DEN vs. WAS	2021-22	27	W	1610612764	WAS	22100411	...	11	8	8	6	23	22	2021-12-11-2021_22	2021-22	28	28-1610612764-2021-22
+    190	1610612743	DEN	22000502	DEN vs. WAS	2020-21	32	L	1610612764	WAS	22000502	...	30	11	30	1	9	25	2021-02-23-2020_21	2020-21	30	30-1610612764-2020-21
+    246	1610612743	DEN	21900252	DEN vs. WAS	2019-20	16	W	1610612764	WAS	21900252	...	24	23	17	28	2	16	2019-11-24-2019_20	2019-20	15	15-1610612764-2019-20
+    380	1610612743	DEN	21801148	DEN vs. WAS	2018-19	76	L	1610612764	WAS	21801148	...	24	8	14	12	7	25	2019-03-29-2018_19	2018-19	78	78-1610612764-2018-19
+    5 rows × 132 columns
+
+    
