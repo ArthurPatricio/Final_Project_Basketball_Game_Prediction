@@ -52,6 +52,19 @@ O trabalho foi feito todo em Python 3. Abaixo, segue a listagem de todas bibliot
     import tensorflow as tf
     import tensorflow_addons as tfa
 
+# Leitura dos Dados
+
+A planilha 'nba_data.xlsx' foi importada e inserida em um Dataframe utilizando a biblioteca pandas.
+
+# Read NBA data from excel file
+
+    nba_data = pd.read_excel('nba_data.xlsx')
+
+O dataframe tem a coluna 'Unnamed: 0' retirada.
+# Drop "Unnamed: 0" column
+
+    nba_data.drop(['Unnamed: 0'], axis=1, inplace=True)
+
 ### Predict NBA games results using AI
 
 https://www.researchgate.net/publication/364954141_MambaNet_A_Hybrid_Neural_Network_for_Predicting_the_NBA_Playoffs
