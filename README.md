@@ -203,4 +203,30 @@ den_home_data.head()
     380	1610612743	DEN	21801148	DEN vs. WAS	2018-19	76	L	1610612764	WAS	21801148	...	24	8	14	12	7	25	2019-03-29-2018_19	2018-19	78	78-1610612764-2018-19
     5 rows × 132 columns
 
-    
+Vale mencionar que Denver é o time que joga em maior elevação na liga, sua arena fica a 5280 acima do nível do mar. Apesar de não ser uma elevação tão considerável, seus efeitos são históricamente conhecidos como um ponto de vantagem para o time da cidade. [1] 
+
+# 2. Rendimento em confrontos
+
+Abaixo, temos um gráfico que apresenta o histórico de confrontos dos Nuggets em casa dentro do período de 6 em análise, ordenado de melhor a pior retrospécto. Denver se sai melhor contra o Portland Trailblazaer, perdendo apenas um jogo em 12 disputados.
+
+    # DENVER NUGGETS HOME MATCHUPS
+
+    plt.figure(figsize=(25,12))
+    fig3 = sns.countplot(data=den_home_data, x=den_home_data['HOME_MATCHUP'],
+                            palette = 'husl', 
+                            hue = den_home_data['HOME_WL'],
+                            order=den_home_data[den_home_data['HOME_WL'] == 'W']['HOME_MATCHUP'].value_counts().index
+                            )
+    fig3.set_xlabel('WINS/LOSES', fontsize=20)
+    fig3.set_ylabel('COUNT', fontsize=20)
+    fig3.tick_params(labelsize=20)
+    plt.title('DENVER NUGGETS HOME MATCHUPS', fontsize = 20)
+    for p in fig3.patches:
+        txt = str(p.get_height().round(2))
+        txt_x = p.get_x() 
+        txt_y = p.get_height()
+        fig3.text(txt_x,txt_y,txt)
+    plt.xticks(rotation=45)
+    plt.show()
+
+![denver_nuggets_home_matchups](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_nuggets_home_matchups.png)
