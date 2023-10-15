@@ -749,3 +749,18 @@ A partir deste ponto nosso conjunto dce dados foi tratado a fim de alimentar a R
          1.46263517,  0.53922627],
        [-1.38952982, -1.12477225, -1.28562526, ..., -1.21871934,
          0.19636269, -1.31430312]])
+
+Os conjuntos de Treino e Teste do conjunto de partidas ficaram com os seguintes formatos:
+
+    print('X_train:', X_train.shape)
+    print('X_test:', X_test.shape)
+    print('y_train:', y_train.shape)
+    print('y_test:', y_test.shape)
+
+    X_train: (4874, 104)
+    X_test: (2089, 104)
+    y_train: (4874,)
+    y_test: (2089,)
+# Rede Neural
+
+A rede neural abaixo foi criada utilizando a biblioteca Tensorflow. A rede neural criada é do tipo densa, redes do tipo densa são aquelas que suas camadas são profundamente conectadas à camada anterior, ou seja, cada neurônio da camada está ligado a todos os neurônios da camada anterior. O nosso modelo treinado também é do tipo supervisionado. O processo de aprendizado supervisionado é aquele em que tem-se os dados de entrada e o(s) valores de sáida conhecido(s) utilizados para treinar o modelo, a rede.
