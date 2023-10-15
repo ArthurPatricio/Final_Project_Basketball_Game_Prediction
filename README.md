@@ -101,3 +101,26 @@ O dataset possui 6963 registros e 132 atributos.
     75%	1.610613e+09	2.210070e+07	60.000000	1.610613e+09	2.210070e+07	60.000000	1.610613e+09	59.000000	29.000000	29.000000	...	23.000000	23.000000	23.000000	23.000000	23.000000	23.000000	23.000000	23.000000	23.000000	60.000000
     max	1.610613e+09	2.220123e+07	82.000000	1.610613e+09	2.220123e+07	82.000000	1.610613e+09	81.000000	64.000000	64.000000	...	30.000000	30.000000	30.000000	30.000000	30.000000	30.000000	30.000000	30.000000	30.000000	82.000000
     8 rows × 114 columns
+
+    # Get classes
+
+    nba_data['HOME_WL'].value_counts()
+
+    HOME_WL
+    W    3936
+    L    3027
+    Name: count, dtype: int64
+
+    # Get nba_data dataframe info
+
+    nba_data.info()
+
+# Chegagem de valores nulos
+
+nba_data não possui nenhum valor faltante.
+
+Foi utilizado a biblioteca missingno para realizar a checagem.
+
+    msno.matrix(nba_data)
+
+![msno_plot](https://github.com/ArthurPatricio/Analise_Exploratoria_e_Previsao_de_Arremessos_da_NBA/blob/main/Images/missingno_plot.png)
