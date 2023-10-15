@@ -23,6 +23,35 @@
 
     - (https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/final_data.py)
 
+# Linguagem, Bibliotecas e Pacotes
+
+O trabalho foi feito todo em Python 3. Abaixo, segue a listagem de todas bibliotecas e pacotes utilizados:
+
+# Import libs
+
+import numpy as np
+import pandas as pd
+import missingno as msno
+from pandas_profiling import ProfileReport
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_theme(style="ticks")
+import plotly.express as px
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import VarianceThreshold
+from sklearn import preprocessing
+from sklearn.preprocessing import LabelEncoder
+from keras import Sequential
+from keras.layers import Dense
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.utils import to_categorical
+from sklearn.preprocessing import StandardScaler
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+import tensorflow as tf
+import tensorflow_addons as tfa
+
 ### Predict NBA games results using AI
 
 https://www.researchgate.net/publication/364954141_MambaNet_A_Hybrid_Neural_Network_for_Predicting_the_NBA_Playoffs
