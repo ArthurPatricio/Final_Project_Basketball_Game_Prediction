@@ -312,3 +312,105 @@ Logo percebe-se que a queda de rendimento dos Nuggets ao fim da temporada, perce
     fig.subplots_adjust(hspace = 0.3)
 
 ![denver_plots_block_1](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_1.png)
+
+Para o próximo bloco de análise analizaremos um dos datasets utilizado para formar o conjunto final de dados deste trabalho. Esta base é a saída do script get_games.py já apresentado. Ela contém a lista de jogos de cada time nas últimas 6 temproadas regulares da NBA. No entanto, continuaremos focando no escopo do Denver Nuggets na temporada 2022-23.
+
+    # Read Denver Nuggets data from excel file
+
+    denver_games_data = pd.read_excel('games_list_Regular+Season.xlsx')
+
+Os dois blocos abaixo apresentam a comparação da performance dos Nuggets entre vitórias e derrotas para 4 métricas relevantes na análise de times de basquete, elas são:
+
+* Percentual de arremessos certos;
+* Lances livres convertidos;
+* Arremessos de três pontos convertidos;
+* Rebotes.
+
+Dos 20 atributos numéricos presentes no dataset, os listados acima são alguns dos comumente usados na avaliação de times de basquete.
+
+O primeiro bloco trás os comparativos entre vitórias e derrotas na forma de gráficos de barra. O comportamento apresenta-se bastante claro, todas as métricas possuem médias maiores nas vitórias, comportamento mais do que esperado. 
+
+Mais interessante é vermos no segundo bloco, formado por gráficos de linha, que apresentam os mesmos atributos, só que agora, através de toda a temporada. As tendências do primeiro bloco também aparecem aqui, as métricas costumam ser maiores em vitórias porém, esta visualização nos permite notar que não existe um recorte limpo que vá ditar o resultado de um jogo. Os gráficos nos apresentam vitórias de Denver com performances abaixo da média nas métricas apresentadas, como também derrotas em que teve-se bons números. Um exemplo são as vitórias em que Denver acertou apenas 4, 5 bolas de três pontos.
+
+Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte muito dinâmico, onde múltiplos fatores podem alterar o resultado de uma partida, em que você não precisa ter os melhores números toda noite, apenas o suficiente para derrotar o seu adversário e no qual existem diferentes estratétias que podem levar a uma vitória.
+
+    # DENVER GAME BAR PLOTS BY W/L
+
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(19, 10))
+
+    sns.set_theme(style="ticks")
+
+    x8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['REB']
+    y8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z8 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['WL']
+
+    plt.figure(figsize=(19,12))
+    fig8 = sns.barplot(
+                        x=z8,
+                        y=x8,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax4,
+                        )
+    fig8.set_xlabel('W/L', fontsize=10)
+    fig8.set_ylabel('REB', fontsize=10)
+    ax4.set_title('DENVER NUGGETS REBOUNDS PER W/L', fontsize = 12)
+    for i in fig8.containers:
+        fig8.bar_label(i,)
+
+
+    x9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG_PCT']
+    y9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z9 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['WL']
+
+    fig9 = sns.barplot(
+                        x=z9,
+                        y=x9,
+                        palette='Set2',
+                        errorbar=None,
+                        ax = ax1
+                        )                   
+    fig9.set_xlabel('W/L', fontsize=10)
+    fig9.set_ylabel('FG PCT', fontsize=10)
+    ax1.set_title('DENVER NUGGETS FIELD GOAL PCT PER W/L', fontsize = 12)
+    for i in fig9.containers:
+        fig9.bar_label(i,)
+
+    x10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FTA']
+    y10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z10 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['WL']
+
+    fig10 = sns.barplot(
+                        x=z10,
+                        y=x10,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax2
+                        )
+    fig10.set_xlabel('W/L', fontsize=10)
+    fig10.set_ylabel('FREE THROWS MADE', fontsize=10)
+    ax2.set_title('DENVER NUGGETS FREE THROWS MADE PER W/L', fontsize = 12)
+    for i in fig10.containers:
+        fig10.bar_label(i,)
+
+    x11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['FG3M']
+    y11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['GAME_N']
+    z11 = denver_games_data[(denver_games_data['TEAM_ABBREVIATION'] == 'DEN') & (denver_games_data['season_id'] == '2022-23')]['WL']
+
+    fig11 = sns.barplot(
+                        x=z11,
+                        y=x11,
+                        palette='Set2',
+                        errorbar=None,
+                        ax=ax3
+                        )
+    fig11.set_xlabel('W/L', fontsize=10)
+    fig11.set_ylabel('FG3M', fontsize=10)
+    ax3.set_title('DENVER NUGGETS FG3 MADE PER W/L', fontsize = 12)
+    for i in fig11.containers:
+        fig11.bar_label(i,)
+
+    fig.subplots_adjust(hspace = 0.3)
+
+![denver_plots_block_2](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_2.png)
+
