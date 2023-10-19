@@ -764,3 +764,97 @@ Os conjuntos de Treino e Teste do conjunto de partidas ficaram com os seguintes 
 # Rede Neural
 
 A rede neural abaixo foi criada utilizando a biblioteca Tensorflow. A rede neural criada é do tipo densa, redes do tipo densa são aquelas que suas camadas são profundamente conectadas à camada anterior, ou seja, cada neurônio da camada está ligado a todos os neurônios da camada anterior. O nosso modelo treinado também é do tipo supervisionado. O processo de aprendizado supervisionado é aquele em que tem-se os dados de entrada e o(s) valores de sáida conhecido(s) utilizados para treinar o modelo, a rede.
+
+    # Train Neural Network
+
+    NumberOfClasses = len(y_train.unique())
+    NumberOfClasses
+
+    encoder = LabelEncoder()
+    y_train = encoder.fit_transform(y_train)
+    y_test = encoder.transform(y_test)
+    print(y_train)
+
+Após os testes com diferentes formatos, obtvemos melhores resultados com uma configuração de 4 camadas, a de entrada, duas intermediárias e a de saída. Para todas as camadas a função de ativação sigmoid obteve os melhores resutados. A rede, com a sua quantide de parâmetros, pode ser vista abaixo:
+
+    # Neural Network
+
+    RN = Sequential()
+    RN.add(Dense(25,input_shape = X_train_normalized.shape[1:], activation = 'sigmoid'))
+    RN.add(Dense(12,activation = 'sigmoid'))
+    RN.add(Dense(5,activation = 'sigmoid'))
+    RN.add(Dense(NumberOfClasses, activation = 'sigmoid'))
+    RN.summary()
+    _________________________________________________________________
+    Layer (type)                Output Shape              Param #   
+    =================================================================
+    dense_134 (Dense)           (None, 25)                2625      
+                                                                    
+    dense_135 (Dense)           (None, 12)                312       
+                                                                    
+    dense_136 (Dense)           (None, 5)                 65        
+                                                                    
+    dense_137 (Dense)           (None, 2)                 12        
+                                                                    
+    =================================================================
+    Total params: 3014 (11.77 KB)
+    Trainable params: 3014 (11.77 KB)
+    Non-trainable params: 0 (0.00 Byte)
+    _________________________________________________________________
+
+A rede foi treinada utilizando um callback como early stop que terminava o treinamento no momento que alcançava-se 65% de acurácia. Nos testes, 68% foi por volta do melhor valor obtido antes de notarmos o crescimento da perda no treinamento, caracterista da ocorrência de Overfitting na rede.
+
+Abaixo listamos os hiperparâmetros utilizados na rede que obtiveram melhores resutlados de forma consistente:
+
+* *Optimizer*:  SGD
+* *Learning Rate*:  0.1
+* *Loss function*: *Binary Crossentropy*
+* *Epochs*: 120
+* *Batch Size*: 32
+* *Validation Split*: 30%
+
+    # Training
+
+    sgd = SGD(learning_rate=0.1)
+    #adam = Adam(learning_rate=0.0001)
+
+    accuracy_threshold = 0.65
+
+    class myCallback(tf.keras.callbacks.Callback):
+        def on_epoch_end(self, epochs, logs={}) :
+            if(logs.get('accuracy') is not None and logs.get('accuracy') >= accuracy_threshold) :
+                print('\nReached 65.0% accuracy.')
+                self.model.stop_training = True
+
+    callbacks = myCallback()
+
+    RN.compile(optimizer = sgd, loss = 'binary_crossentropy', metrics = ['accuracy']) 
+    history = RN.fit(X_train_normalized, to_categorical(y_train), epochs = 120, 
+                        batch_size=32, validation_split=0.3, callbacks = [callbacks])
+
+    # Evaluation
+
+    score = RN.evaluate(X_test_normalized, to_categorical(y_test), verbose = 0)
+    print('Test loss score:', score[0])
+    print('Test accuracy:', score[1])
+
+    Test loss score: 0.6368141770362854
+    Test accuracy: 0.6495931148529053
+
+Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo Callback, por volta de 30 a 35 épocas, o valor a perda do conjunto de validação já parou de diminuir e estabilizou. Em outros testes, com treinamento com maior quantida de épocas, foi possível notar o crescimento da perda de validação após este momento. Este comportamento nos leva a crer que a rede estava prestes a sofrer de Overfitting.
+
+    # Training and validation per loss and epochs
+
+    plt.plot(history.history['loss'], label='treino')
+    plt.plot(history.history['val_loss'], label='validação')
+    #plt.plot(history.history['accuracy'], label='acurácia-treino')
+    #plt.plot(history.history['val_accuracy'], label='acurácia-validação')
+    plt.title('Perda treino/validação')
+    plt.ylabel('perda')
+    plt.xlabel('épocas')
+    plt.legend()
+
+![loss_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/loss_train_validation.png)
+
+
+![accuracy_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/accuracy_train_validation.png)
