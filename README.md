@@ -802,7 +802,7 @@ Após os testes com diferentes formatos, obtvemos melhores resultados com uma co
     Non-trainable params: 0 (0.00 Byte)
     _________________________________________________________________
 
-A rede foi treinada utilizando um callback como early stop que terminava o treinamento no momento que alcançava-se 65% de acurácia. Nos testes, 68% foi por volta do melhor valor obtido antes de notarmos o crescimento da perda no treinamento, caracterista da ocorrência de Overfitting na rede.
+A rede foi treinada utilizando um *callback* como early stop que terminava o treinamento no momento que alcançava-se 65% de acurácia. Nos testes, 65% foi por volta do melhor valor obtido antes de notarmos o crescimento da perda no treinamento, caracterista da ocorrência de *overfitting* na rede.
 
 Abaixo listamos os hiperparâmetros utilizados na rede que obtiveram melhores resutlados de forma consistente:
 
@@ -841,7 +841,7 @@ Abaixo listamos os hiperparâmetros utilizados na rede que obtiveram melhores re
     Test loss score: 0.6368141770362854
     Test accuracy: 0.6495931148529053
 
-Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo Callback, por volta de 30 a 35 épocas, o valor a perda do conjunto de validação já parou de diminuir e estabilizou. Em outros testes, com treinamento com maior quantida de épocas, foi possível notar o crescimento da perda de validação após este momento. Este comportamento nos leva a crer que a rede estava prestes a sofrer de Overfitting.
+Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo Callback, por volta de 30 a 35 épocas, o valor a perda do conjunto de validação já parou de diminuir e estabilizou. Em outros testes, com treinamento com maior quantida de épocas, foi possível notar o crescimento da perda de validação após este momento. Este comportamento nos leva a crer que a rede estava prestes a sofrer de *overfitting*.
 
     # Training and validation per loss and epochs
 
