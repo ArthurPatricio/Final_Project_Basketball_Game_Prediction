@@ -813,33 +813,33 @@ Abaixo listamos os hiperparâmetros utilizados na rede que obtiveram melhores re
 * *Batch Size*: 32
 * *Validation Split*: 30%
 
-    # Training
+        # Training
 
-    sgd = SGD(learning_rate=0.1)
-    #adam = Adam(learning_rate=0.0001)
+        sgd = SGD(learning_rate=0.1)
+        #adam = Adam(learning_rate=0.0001)
 
-    accuracy_threshold = 0.65
+        accuracy_threshold = 0.65
 
-    class myCallback(tf.keras.callbacks.Callback):
-        def on_epoch_end(self, epochs, logs={}) :
-            if(logs.get('accuracy') is not None and logs.get('accuracy') >= accuracy_threshold) :
-                print('\nReached 65.0% accuracy.')
-                self.model.stop_training = True
+        class myCallback(tf.keras.callbacks.Callback):
+            def on_epoch_end(self, epochs, logs={}) :
+                if(logs.get('accuracy') is not None and logs.get('accuracy') >= accuracy_threshold) :
+                    print('\nReached 65.0% accuracy.')
+                    self.model.stop_training = True
 
-    callbacks = myCallback()
+        callbacks = myCallback()
 
-    RN.compile(optimizer = sgd, loss = 'binary_crossentropy', metrics = ['accuracy']) 
-    history = RN.fit(X_train_normalized, to_categorical(y_train), epochs = 120, 
-                        batch_size=32, validation_split=0.3, callbacks = [callbacks])
+        RN.compile(optimizer = sgd, loss = 'binary_crossentropy', metrics = ['accuracy']) 
+        history = RN.fit(X_train_normalized, to_categorical(y_train), epochs = 120, 
+                            batch_size=32, validation_split=0.3, callbacks = [callbacks])
 
-    # Evaluation
+        # Evaluation
 
-    score = RN.evaluate(X_test_normalized, to_categorical(y_test), verbose = 0)
-    print('Test loss score:', score[0])
-    print('Test accuracy:', score[1])
+        score = RN.evaluate(X_test_normalized, to_categorical(y_test), verbose = 0)
+        print('Test loss score:', score[0])
+        print('Test accuracy:', score[1])
 
-    Test loss score: 0.6368141770362854
-    Test accuracy: 0.6495931148529053
+        Test loss score: 0.6368141770362854
+        Test accuracy: 0.6495931148529053
 
 Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo Callback, por volta de 30 a 35 épocas, o valor a perda do conjunto de validação já parou de diminuir e estabilizou. Em outros testes, com treinamento com maior quantida de épocas, foi possível notar o crescimento da perda de validação após este momento. Este comportamento nos leva a crer que a rede estava prestes a sofrer de *overfitting*.
 
