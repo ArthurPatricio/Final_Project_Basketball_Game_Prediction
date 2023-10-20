@@ -877,7 +877,7 @@ Finalmente, este trabalho nos leva a conluir que a grande complexidadde e variad
 
 # REFERÊNCIAS
 
-[1] J.Beatty. M. Ramesh. E.polley. A.Arocho. Winners and Whinners https://devpost.com/software/applying-deep-learning-techniques-to-nba-predictions#updates, 2021.
+[1] J.Beatty. M. Ramesh. E.polley. A.Arocho. Winners and Whinners. https://devpost.com/software/applying-deep-learning-techniques-to-nba-predictions#updates, 2021.
 
 [2] Mile-High NBA advantage: Denver altitude helps Nuggets go unbeaten at home in playoffs. https://english.elpais.com/sports/2023-06-03/mile-high-nba-advantage-denver-altitude-helps-nuggets-go-unbeaten-at-home-in-playoffs.html, 2023.
 
