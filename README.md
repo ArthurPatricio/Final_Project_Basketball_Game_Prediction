@@ -15,7 +15,7 @@
 
 * O script 'organize_data.py' tem os dados dados proveninetes dos 2 scripts anteriores e como suas entradas. Este script reorganiza os dados de forma que cada linha do dataframe seja única, contendo uma das partidas das últimas 6 temporadas regulares do conjunto. Colunas auxiliares foram craidas indicando o número do jogo dentro da temporada para cada time no confronto, por exemplo, um confronto pode uma partida entre de número 50 de um time A na temporada 2022-23 e a partida 48 de um time B que ele enfrenta neste confronto. 
 
-* Os dados também foram trbalhados de forma que foram associados a cada confronto as médias estatísticas dos times. A associação é feita da seguinte forma, para cada confronto cada time recebe as sua médias estatísticas até o momento daquele jogo. Expandindo o exemplo anterior, no confronto entre os times A e B, A irá jogar sua partida de número 50, então chegara com as médias das 49 partidas anteriores a este jogo, já o time B, chegará com as médias das 47 partidas que já jogou na temporada. O script pode ser encontrado em:
+* Os dados também foram trabalhados de forma que foram associados a cada confronto as médias estatísticas dos times. A associação é feita da seguinte forma, para cada confronto cada time recebe as sua médias estatísticas até o momento daquele jogo. Expandindo o exemplo anterior, no confronto entre os times A e B, A irá jogar sua partida de número 50, então chegara com as médias das 49 partidas anteriores a este jogo, já o time B, chegará com as médias das 47 partidas que já jogou na temporada. Foi inspirado no trabalho "*Winners & Whiners*" de J.Beatty, M. Ramesh, E.polley e A.Arocho. O script pode ser encontrado em: [1]
 
     - (https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/organize_data.py)
 
@@ -203,7 +203,7 @@ Um novo dataframe, den_home_data, foi criado a partir de um subconjunto de dados
     380	1610612743	DEN	21801148	DEN vs. WAS	2018-19	76	L	1610612764	WAS	21801148	...	24	8	14	12	7	25	2019-03-29-2018_19	2018-19	78	78-1610612764-2018-19
     5 rows × 132 columns
 
-Vale mencionar que Denver é o time que joga em maior elevação na liga, sua arena fica a 5280 acima do nível do mar. Apesar de não ser uma elevação tão considerável, seus efeitos são históricamente conhecidos como um ponto de vantagem para o time da cidade. [1] 
+Vale mencionar que Denver é o time que joga em maior elevação na liga, sua arena fica a 5280 acima do nível do mar. Apesar de não ser uma elevação tão considerável, seus efeitos são históricamente conhecidos como um ponto de vantagem para o time da cidade. [2] 
 
 # 2. Rendimento em confrontos
 
@@ -239,13 +239,13 @@ Porém, analisemos primeiro o quarto gráfico. Ele apresenta a distribuição de
 
 Os outros 3 gráficos possuem como eixo x as partidas jogadas em casa. O primeiro, nossa fonte de comparação, apresenta o rendimento do time através da média do percentual de vitórias na temporada até dada partida. O segundo, a média de lances livres tentados por partida na temporada até dada partida. Já o terceiro, a média da porcentagem de arremessos convertidos na temporada até dada partida. 
 
-Como pode-se notar, existe similaridade nas curvas. Tal fato corrobora o esperado, as duas estatísticas apresentadas são historicamente reconhecidas como bons medidores da capacidade de um time em vencer partidas. O lance livre, conhecido também como o arremesso mais fácil do esporte, é a forma mais garantida de pontuar-se no basquete, na temporada 2022-23 por exemplo, a média da liga foi de 78,2% de acerto. Em contra partida, a média para arremesso (cestas) certas ficou em 47,5%. De forma geral, são considerados bons números, que costumam indicar boas chances de vitórias, a partir de 80% para lances livres e 50% para arremessos. [2]
+Como pode-se notar, existe similaridade nas curvas. Tal fato corrobora o esperado, as duas estatísticas apresentadas são historicamente reconhecidas como bons medidores da capacidade de um time em vencer partidas. O lance livre, conhecido também como o arremesso mais fácil do esporte, é a forma mais garantida de pontuar-se no basquete, na temporada 2022-23 por exemplo, a média da liga foi de 78,2% de acerto. Em contra partida, a média para arremesso (cestas) certas ficou em 47,5%. De forma geral, são considerados bons números, que costumam indicar boas chances de vitórias, a partir de 80% para lances livres e 50% para arremessos. [3]
 
-Na temporada 2022-23, Denver terminou com 75,1% para lances livres, sendo a quinta pior média entre todos os times e 50.4% para arremessos, a melhor marca da liga. Entretando, os Nuggets terminam a temporada regular com apenas a quarta posição no ranking geral. Para nos contextualizarmos melhor, vale uma breve explicação de como a temporada regular da NBA opera. [3]
+Na temporada 2022-23, Denver terminou com 75,1% para lances livres, sendo a quinta pior média entre todos os times e 50.4% para arremessos, a melhor marca da liga. Entretando, os Nuggets terminam a temporada regular com apenas a quarta posição no ranking geral. Para nos contextualizarmos melhor, vale uma breve explicação de como a temporada regular da NBA opera. [4]
 
 De forma simplificada, temos 30 times que são dividios em 2 grupos (conferências) de 15 times cada, os 8 clubes com melhor ranking dentro de cada conferência se classificam para a pós-temporada, que funciona como um torneiro mata-mata, assim como a segunda fase de uma Copa do Mundo de futebol.
 
-Denver joga na conferência Oeste, os 3 times que terminaram a sua frente jogam na leste. Denver termina a temproada regular liderando a sua conferência, se classificando em primeiro para os playoffs. Se analizarmos o recorte de meio de temporada, Denver chega ao ponto médio com a melhor campanha de sua conferência, com 6 vitórias a mais que o segundo colocado, grande vantagem para a NBA. Já na segunda metade, tem apenas a oitava melhor campanha dentro da conferência. Olhando para a liga como um todo, na primeira metade, termina em terceiro geral, com apenas uma vitória atrás dos líderes, na segunda metade, possui apenas a décima quinta melhor campanha. [4]
+Denver joga na conferência Oeste, os 3 times que terminaram a sua frente jogam na leste. Denver termina a temproada regular liderando a sua conferência, se classificando em primeiro para os playoffs. Se analizarmos o recorte de meio de temporada, Denver chega ao ponto médio com a melhor campanha de sua conferência, com 6 vitórias a mais que o segundo colocado, grande vantagem para a NBA. Já na segunda metade, tem apenas a oitava melhor campanha dentro da conferência. Olhando para a liga como um todo, na primeira metade, termina em terceiro geral, com apenas uma vitória atrás dos líderes, na segunda metade, possui apenas a décima quinta melhor campanha. [5]
 
 Logo percebe-se que a queda de rendimento dos Nuggets ao fim da temporada, perceptível nos gráfico foi resultado de uma escolha do clube em poupar seus atletas, a fim chegar na pós temporada com o time o mais descansado e saudável possível, depois que notou-se que o primeiro lugar na conferência muito dificilmente seria perdido. 
 
@@ -845,16 +845,44 @@ Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo
 
     # Training and validation per loss and epochs
 
-    plt.plot(history.history['loss'], label='treino')
-    plt.plot(history.history['val_loss'], label='validação')
-    #plt.plot(history.history['accuracy'], label='acurácia-treino')
-    #plt.plot(history.history['val_accuracy'], label='acurácia-validação')
-    plt.title('Perda treino/validação')
-    plt.ylabel('perda')
-    plt.xlabel('épocas')
+    plt.plot(history.history['loss'], label='Train')
+    plt.plot(history.history['val_loss'], label='Validation')
+    plt.title('Loss Train/Validation')
+    plt.ylabel('Loss')
+    plt.xlabel('Epochs')
     plt.legend()
 
 ![loss_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/loss_train_validation.png)
 
+O gráfico abaixo nos apresenta o comportamento da acurácia da rede ao passar das épocas. Como podemos notar, no momento de término do treinamento devido ao gatilho do *callback*, por volta da época 36, já possível notar uma diminuição na curva de acurácia de validação. A curva de acurácia de validação possuir rendimento inferior à curva de treino é um comportamento compreensível e até esperado. Porém, aliado ao gráfico de perda acima, podemos entender como um início de *overfitting*.
+
+    # Training and validation per acuracy and epochs
+
+    plt.plot(history.history['accuracy'], label='Train')
+    plt.plot(history.history['val_accuracy'], label='Validation')
+    plt.title('Accuracy Train/Validation')
+    plt.ylabel('Accuracy')
+    plt.xlabel('Epochs')
+    plt.legend()
 
 ![accuracy_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/accuracy_train_validation.png)
+
+# Conclusão
+
+Após avaliação dos resultados obtidos com a rede neural criada neste trabalho, ficou claro que o desafio de criar um modelo que performe bem e consistentemente para prever o resultado de partidas da NBA é grande. Estamos lidando com um problema de complexiade muito elevada, um jogo de basquete possuí vários atributos, muitos deles são traduzidos em números e utilizados como métricas, os que nos utilizamos neste trabalho são exemplos. Porém, o jogo possui outros fatores mais difíceis de medir-se, como por exemplo o estado físico dos jogadores durante as partidas e outros até que não é possível medirmos, como o estado mental dos atletas. A diferença de uma cesta que entra ou não pode estar uma pequena variação do humor ou no nível de confiança do arremessador, estas alterações alteram a mecânica de um arremesso. A somatória de fatores assim, ao longo de um contronto, fazem muita diferença.
+
+Outro ponto interessante é sobre os dados escolhidos para serem os *inputs* da nossa rede. O conjunto continha as médias das principais estatísticas dos times até o momento de uma dada partida. Apesar da escolha de organizar os dados desta forma aparentar ter sido acertada, não foi o suficiente para atingirmos resultados melhores do que acurácia por volta de 65% e perda por volta de 64%. Assim, fica como sugestão de exercício futuro a inclusão das estatísticas dos jogadores no conjunto. Os jogadores de basquete tem grande influência individual grande no resultado de jogos se comparado a esportes como o futebol, isso se dá por serem poucos em quadra, apenas 5 de cada time. Novamente, diferente de esportes com quandidade maior de atletas em ação, a performance de apenas um jogador de basquete pode e de fato altera muitas vezes o resultado de um jogo. Não é incomum termos jogos da NBA onde a principal estrela do time pontuou mais do que seus quatro companheiros titulares combinados. Desta forma, performances individuais excelentes conseguem dar vitórias a times em noites de performances coletivas pobres. Portanto, a inclusão das estatísticas individuais tem potencial de nos gerar resultados melhores, passando para os modelos uma visão mais completa de uma partida de basquete.
+
+Finalmente, este trabalho nos leva a conluir que a grande complexidadde e variados fatores associados a uma partida de basquete, são limitadores da performance da rede neural construída e que, a inclusão de dados individuais dos atletas, mostra-se promissora para obter-se melhores resultados.
+
+# REFERÊNCIAS
+
+[1] J.Beatty. M. Ramesh. E.polley. A.Arocho. Winners and Whinners https://devpost.com/software/applying-deep-learning-techniques-to-nba-predictions#updates, 2021.
+
+[2] Mile-High NBA advantage: Denver altitude helps Nuggets go unbeaten at home in playoffs. https://english.elpais.com/sports/2023-06-03/mile-high-nba-advantage-denver-altitude-helps-nuggets-go-unbeaten-at-home-in-playoffs.html, 2023.
+
+[3] NBA League Averages - Per Game. https://www.basketball-reference.com/leagues/NBA_stats_per_game.html, 2023.
+
+[4] NBA Advanced Stats.  https://www.nba.com/stats/teams/traditional, 2023.
+
+[5] NBA Advanced Stats. Pre All-Star. https://www.nba.com/stats/teams/traditional?Conference=West&SeasonSegment=Pre+All-Star, 2023.
