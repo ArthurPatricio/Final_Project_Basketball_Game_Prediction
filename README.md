@@ -875,7 +875,7 @@ Outro ponto interessante é sobre os dados escolhidos para serem os *inputs* da 
 
 Finalmente, este trabalho nos leva a conluir que a grande complexidadde e variados fatores associados a uma partida de basquete, são limitadores da performance da rede neural construída e que, a inclusão de dados individuais dos atletas, mostra-se promissora para obter-se melhores resultados.
 
-# REFERÊNCIAS
+# Referências
 
 [1] J.Beatty. M. Ramesh. E.polley. A.Arocho. Winners and Whinners. https://devpost.com/software/applying-deep-learning-techniques-to-nba-predictions#updates, 2021.
 
