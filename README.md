@@ -165,7 +165,7 @@ Primeiramente, foram plotadas as vitórias e derrotas dos 10 times com melhor pe
         fig11.text(txt_x,txt_y,txt)
     plt.show()
 
-![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.png)
+![home_win_losses_by_team](Images/home_win_losses_by_team.png)
 
 Também foram plotadas as vitórias e derrotas dos 10 times com melhor performance em jogos fora de casa nas últimas 6 temporadas apenas para termos uma visualização inicial dos nossos dados. 
 
@@ -188,7 +188,7 @@ Também foram plotadas as vitórias e derrotas dos 10 times com melhor performan
         fig2.text(txt_x,txt_y,txt)
     plt.show()
 
-![away_wins_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/away_wins_losses_by_team.png)
+![away_wins_losses_by_team](Images/away_wins_losses_by_team.png)
 
 Analisando os dois gráficos, percebe-se que o fator casa é valioso na NBA. Times tendem a ter melhores resultados quando jogam em seus domínios.
 
@@ -231,7 +231,7 @@ Abaixo, temos um gráfico que apresenta o histórico de confrontos dos Nuggets e
     plt.xticks(rotation=45)
     plt.show()
 
-![denver_nuggets_home_matchups](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_nuggets_home_matchups.png)
+![denver_nuggets_home_matchups](Images/denver_nuggets_home_matchups.png)
 
 # 3. Avaliação da temporada
 
@@ -313,7 +313,7 @@ Logo percebe-se que a queda de rendimento dos Nuggets ao fim da temporada, perce
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_1](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_1.png)
+![denver_plots_block_1](Images/denver_plots_block_1.png)
 
 Para o próximo bloco de análise analizaremos um dos datasets utilizado para formar o conjunto final de dados deste trabalho. Esta base é a saída do script get_games.py já apresentado. Ela contém a lista de jogos de cada time nas últimas 6 temproadas regulares da NBA. No entanto, continuaremos focando no escopo do Denver Nuggets na temporada 2022-23.
 
@@ -414,7 +414,7 @@ Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte m
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_2](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_2.png)
+![denver_plots_block_2](Images/denver_plots_block_2.png)
 
     # DENVER GAME LINE PLOTS BY W/L
 
@@ -487,7 +487,7 @@ Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte m
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_3](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_3.png)
+![denver_plots_block_3](Images/denver_plots_block_3.png)
 
 Os dois blocos a seguir são bastante semelhantes aos anteriores, porém, estes comparam a performance em casa e fora. Como é de se esperar, nas 4 estatísticas escolhidas para análise, as médias são melhores em casa. Nos jogos em casa Denver arremessa em média 51,5% e fora 49,6%, acerta em média uma bola de três, cerca de 4 lances livres e pega 4 rebotes a mais. Em uma liga tão disputada e onde os jogos são muitas vezes são decididos nos últimos lances, estas alerações fazem muita diferença no reusultado das partidas.
 
@@ -573,7 +573,7 @@ Tal comportamento analisado já nos indica que não será trivial criar uma rede
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_4](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_4.png)
+![denver_plots_block_4](Images/denver_plots_block_4.png)
 
     # DENVER GAME LINE PLOTS BY HOME/AWAY
 
@@ -645,7 +645,7 @@ Tal comportamento analisado já nos indica que não será trivial criar uma rede
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_5](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_5.png)
+![denver_plots_block_5](Images/denver_plots_block_5.png)
 
 # Previsão de resultados utilizando Redes Neurais
 
@@ -763,6 +763,7 @@ Os conjuntos de Treino e Teste do conjunto de partidas ficaram com os seguintes 
     X_test: (2089, 104)
     y_train: (4874,)
     y_test: (2089,)
+
 # Rede Neural
 
 A rede neural abaixo foi criada utilizando a biblioteca Tensorflow. A rede neural criada é do tipo densa, redes do tipo densa são aquelas que suas camadas são profundamente conectadas à camada anterior, ou seja, cada neurônio da camada está ligado a todos os neurônios da camada anterior. O nosso modelo treinado também é do tipo supervisionado. O processo de aprendizado supervisionado é aquele em que tem-se os dados de entrada e o(s) valores de sáida conhecido(s) utilizados para treinar o modelo, a rede.
@@ -854,7 +855,7 @@ Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo
     plt.xlabel('Epochs')
     plt.legend()
 
-![loss_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/loss_train_validation.png)
+![loss_train_validation](Images/loss_train_validation.png)
 
 O gráfico abaixo nos apresenta o comportamento da acurácia da rede ao passar das épocas. Como podemos notar, no momento de término do treinamento devido ao gatilho do *callback*, por volta da época 36, já possível notar uma diminuição na curva de acurácia de validação. A curva de acurácia de validação possuir rendimento inferior à curva de treino é um comportamento compreensível e até esperado. Porém, aliado ao gráfico de perda acima, podemos entender como um início de *overfitting*.
 
@@ -867,7 +868,7 @@ O gráfico abaixo nos apresenta o comportamento da acurácia da rede ao passar d
     plt.xlabel('Epochs')
     plt.legend()
 
-![accuracy_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/accuracy_train_validation.png)
+![accuracy_train_validation](Images/accuracy_train_validation.png)
 
 # Conclusão
 
