@@ -125,7 +125,7 @@ Foi utilizado a biblioteca missingno para realizar a checagem.
 
     msno.matrix(nba_data)
 
-![msno_plot](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/msnoplot.png)
+![msno_plot](Images/msnoplot.png)
 
 # Análise Exploratória
 

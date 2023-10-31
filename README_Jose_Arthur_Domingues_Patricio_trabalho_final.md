@@ -126,7 +126,7 @@ Foi utilizado a biblioteca missingno para realizar a checagem.
     msno.matrix(nba_data)
 
 ![Alt text](msnoplot.png)
-<!-- ![msno_plot](C:\Users\arthu\Códigos e Relatórios\TCC 2021.1\Final_Project_Basketball_Game_Prediction\Images\msnoplot.png) -->
+![msno_plot](Images/msnoplot.png)
 
 # Análise Exploratória
 
