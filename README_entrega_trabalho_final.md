@@ -56,17 +56,15 @@ O trabalho foi feito todo em Python 3. Abaixo, segue a listagem de todas bibliot
 
 A planilha 'nba_data.xlsx' foi importada e inserida em um Dataframe utilizando a biblioteca pandas.
 
-    # Read NBA data from excel file
+# Read NBA data from excel file
 
     nba_data = pd.read_excel('nba_data.xlsx')
 
 O dataframe tem a coluna 'Unnamed: 0' retirada.
-
-    # Drop "Unnamed: 0" column
+# Drop "Unnamed: 0" column
 
     nba_data.drop(['Unnamed: 0'], axis=1, inplace=True)
-
-    # Análise Inicial
+# Análise Inicial
 
 O dataset possui 6963 registros e 132 atributos.
 
@@ -125,7 +123,8 @@ Foi utilizado a biblioteca missingno para realizar a checagem.
 
     msno.matrix(nba_data)
 
-![msno_plot](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/msnoplot.png)
+![Alt text](msnoplot.png)
+<!-- ![msno_plot](C:\Users\arthu\Códigos e Relatórios\TCC 2021.1\Final_Project_Basketball_Game_Prediction\Images\msnoplot.png) -->
 
 # Análise Exploratória
 
@@ -165,7 +164,8 @@ Primeiramente, foram plotadas as vitórias e derrotas dos 10 times com melhor pe
         fig11.text(txt_x,txt_y,txt)
     plt.show()
 
-![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.png)
+![Alt text](home_win_losses_by_team.png)
+<!-- ![home_win_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/home_win_losses_by_team.png) -->
 
 Também foram plotadas as vitórias e derrotas dos 10 times com melhor performance em jogos fora de casa nas últimas 6 temporadas apenas para termos uma visualização inicial dos nossos dados. 
 
@@ -188,7 +188,8 @@ Também foram plotadas as vitórias e derrotas dos 10 times com melhor performan
         fig2.text(txt_x,txt_y,txt)
     plt.show()
 
-![away_wins_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/away_wins_losses_by_team.png)
+![Alt text](away_wins_losses_by_team.png)
+<!-- ![away_wins_losses_by_team](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/away_wins_losses_by_team.png) -->
 
 Analisando os dois gráficos, percebe-se que o fator casa é valioso na NBA. Times tendem a ter melhores resultados quando jogam em seus domínios.
 
@@ -231,7 +232,8 @@ Abaixo, temos um gráfico que apresenta o histórico de confrontos dos Nuggets e
     plt.xticks(rotation=45)
     plt.show()
 
-![denver_nuggets_home_matchups](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_nuggets_home_matchups.png)
+![Alt text](denver_nuggets_home_matchups.png)
+<!-- ![denver_nuggets_home_matchups](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_nuggets_home_matchups.png) -->
 
 # 3. Avaliação da temporada
 
@@ -313,7 +315,8 @@ Logo percebe-se que a queda de rendimento dos Nuggets ao fim da temporada, perce
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_1](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_1.png)
+![Alt text](denver_plots_block_1.png)
+<!-- ![denver_plots_block_1](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_1.png) -->
 
 Para o próximo bloco de análise analizaremos um dos datasets utilizado para formar o conjunto final de dados deste trabalho. Esta base é a saída do script get_games.py já apresentado. Ela contém a lista de jogos de cada time nas últimas 6 temproadas regulares da NBA. No entanto, continuaremos focando no escopo do Denver Nuggets na temporada 2022-23.
 
@@ -414,7 +417,8 @@ Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte m
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_2](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_2.png)
+![Alt text](denver_plots_block_2.png)
+<!-- ![denver_plots_block_2](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_2.png) -->
 
     # DENVER GAME LINE PLOTS BY W/L
 
@@ -487,7 +491,8 @@ Esta inconsistência corrobora a natureza do esporte, o basquete é um esporte m
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_3](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_3.png)
+![Alt text](denver_plots_block_3.png)
+<!-- ![denver_plots_block_3](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_3.png) -->
 
 Os dois blocos a seguir são bastante semelhantes aos anteriores, porém, estes comparam a performance em casa e fora. Como é de se esperar, nas 4 estatísticas escolhidas para análise, as médias são melhores em casa. Nos jogos em casa Denver arremessa em média 51,5% e fora 49,6%, acerta em média uma bola de três, cerca de 4 lances livres e pega 4 rebotes a mais. Em uma liga tão disputada e onde os jogos são muitas vezes são decididos nos últimos lances, estas alerações fazem muita diferença no reusultado das partidas.
 
@@ -573,7 +578,8 @@ Tal comportamento analisado já nos indica que não será trivial criar uma rede
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_4](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_4.png)
+![Alt text](denver_plots_block_4.png)
+<!-- ![denver_plots_block_4](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_4.png) -->
 
     # DENVER GAME LINE PLOTS BY HOME/AWAY
 
@@ -645,7 +651,8 @@ Tal comportamento analisado já nos indica que não será trivial criar uma rede
 
     fig.subplots_adjust(hspace = 0.3)
 
-![denver_plots_block_5](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_5.png)
+![Alt text](denver_plots_block_5.png)
+<!-- ![denver_plots_block_5](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/denver_plots_block_5.png) -->
 
 # Previsão de resultados utilizando Redes Neurais
 
@@ -854,7 +861,8 @@ Como pode ser visto no gráfico abaixo, no momento de parada do treinamento pelo
     plt.xlabel('Epochs')
     plt.legend()
 
-![loss_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/loss_train_validation.png)
+![Alt text](loss_train_validation.png)
+<!--![loss_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/loss_train_validation.png) -->
 
 O gráfico abaixo nos apresenta o comportamento da acurácia da rede ao passar das épocas. Como podemos notar, no momento de término do treinamento devido ao gatilho do *callback*, por volta da época 36, já possível notar uma diminuição na curva de acurácia de validação. A curva de acurácia de validação possuir rendimento inferior à curva de treino é um comportamento compreensível e até esperado. Porém, aliado ao gráfico de perda acima, podemos entender como um início de *overfitting*.
 
@@ -867,7 +875,8 @@ O gráfico abaixo nos apresenta o comportamento da acurácia da rede ao passar d
     plt.xlabel('Epochs')
     plt.legend()
 
-![accuracy_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/accuracy_train_validation.png)
+![Alt text](accuracy_train_validation.png)
+<!-- ![accuracy_train_validation](https://github.com/ArthurPatricio/Final_Project_Basketball_Game_Prediction/blob/main/Images/accuracy_train_validation.png) -->
 
 # Conclusão
 
