@@ -56,15 +56,17 @@ O trabalho foi feito todo em Python 3. Abaixo, segue a listagem de todas bibliot
 
 A planilha 'nba_data.xlsx' foi importada e inserida em um Dataframe utilizando a biblioteca pandas.
 
-# Read NBA data from excel file
+    # Read NBA data from excel file
 
-    nba_data = pd.read_excel('nba_data.xlsx')
+    nba_data = pd.read_excel('nba_data.xlsx') 
 
 O dataframe tem a coluna 'Unnamed: 0' retirada.
-# Drop "Unnamed: 0" column
+
+    # Drop "Unnamed: 0" column
 
     nba_data.drop(['Unnamed: 0'], axis=1, inplace=True)
-# Análise Inicial
+
+    # Análise Inicial
 
 O dataset possui 6963 registros e 132 atributos.
 
